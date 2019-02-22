@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from "../actions/auth";
-import {Dispatch} from "redux";
+import { AnyThunkDispatch } from '../types'
 
-export const Header = ({ startLogout }) => (
+type RootState = {};
+
+export const Header = ({ startLogout }: any) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
@@ -17,7 +19,7 @@ export const Header = ({ startLogout }) => (
   </header>
 );
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+const mapDispatchToProps = (dispatch: AnyThunkDispatch<RootState>) => ({
   startLogout: () => dispatch(startLogout())
 });
 

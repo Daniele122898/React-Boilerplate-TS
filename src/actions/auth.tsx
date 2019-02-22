@@ -1,3 +1,5 @@
+import { AnyAction } from "redux";
+import { ThunkResult } from '../types'
 import { firebase, googleAuthProvider } from '../firebase/firebase';
 import * as constants from '../constants';
 
@@ -27,8 +29,12 @@ export const logout = () : Logout => ({
   type: constants.LOGOUT
 });
 
-export const startLogout = (): any => {
+export interface StartLogout extends AnyAction{
+}
+
+export const startLogout = (): ThunkResult<Promise<void>> =>  {
   return () => {
     return firebase.auth().signOut();
   };
+  
 };
